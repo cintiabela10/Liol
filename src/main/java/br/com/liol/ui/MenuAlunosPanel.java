@@ -56,7 +56,7 @@ public class MenuAlunosPanel extends JPanel {
 
         for (Aluno aluno : alunos) {
 
-            JButton btnAluno = new JButton(aluno.getNome());
+            JButton btnAluno = new JButton(aluno.getNomeCompleto());
 
             btnAluno.setBackground(new Color(124, 77, 255));
             btnAluno.setForeground(Color.WHITE);
