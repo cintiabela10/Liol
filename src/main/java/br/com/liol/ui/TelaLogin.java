@@ -138,6 +138,9 @@ public class TelaLogin extends JFrame {
 		btnEntrar.setBounds(402, 331, 140, 40);
 		contentPane.add(btnEntrar);
 		
+		// Permite acionar o botão Entrar pela tecla Enter
+		getRootPane().setDefaultButton(btnEntrar);
+		
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEmail.setForeground(Color.WHITE);
