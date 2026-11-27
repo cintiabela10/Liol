@@ -292,12 +292,12 @@ public class PerfilAlunoPanel extends JPanel {
 		add(lblObjetivo);
 		
 //Preenche os campos com os dados dos alunos
-		textFieldNome.setText(aluno.getNome());
+		textFieldNome.setText(aluno.getNomeCompleto());
 
 		textFieldCPF.setText(aluno.getCpf());
 
 		textFieldDataNasc.setText(
-		        aluno.getDataNascimento());
+		        aluno.getDataNasc().toString());
 
 		textFieldTelefone.setText(
 		        aluno.getTelefone());
