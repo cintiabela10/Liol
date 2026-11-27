@@ -8,7 +8,12 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
+import br.com.liol.entities.Aluno;
+
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PerfilAlunoPanel extends JPanel {
 
@@ -31,11 +36,21 @@ public class PerfilAlunoPanel extends JPanel {
 	private JTextField textFieldEmail;
 	private JLabel lblMatricula;
 	private JLabel lblObjetivo;
+	private JRadioButton rdbtnAtiva;
+	private JRadioButton rdbtnExpirada;
+	private JRadioButton rdbtnCancelada;
+
+	private JRadioButton rdbtnHipertrofia;
+	private JRadioButton rdbtnEmagrecimento;
+	private JRadioButton rdbtnCondicionamento;
+	
+	private MenuBase menuBase;
 
 	/**
 	 * Create the panel.
 	 */
-	public PerfilAlunoPanel() {
+	public PerfilAlunoPanel(MenuBase menuBase, Aluno aluno) {
+		this.menuBase = menuBase;
 		setForeground(new Color(128, 128, 192));
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
@@ -48,31 +63,39 @@ public class PerfilAlunoPanel extends JPanel {
 		add(lblTitulo);
 		
 		textFieldNome = new JTextField();
+		textFieldNome.setForeground(new Color(255, 255, 255));
+		textFieldNome.setEditable(false);
 		textFieldNome.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
 		textFieldNome.setBackground(Color.BLACK);
-		textFieldNome.setBounds(178, 102, 96, 18);
+		textFieldNome.setBounds(178, 102, 131, 18);
 		add(textFieldNome);
 		textFieldNome.setColumns(10);
 		
 		textFieldCPF = new JTextField();
+		textFieldCPF.setForeground(new Color(255, 255, 255));
+		textFieldCPF.setEditable(false);
 		textFieldCPF.setBackground(Color.BLACK);
 		textFieldCPF.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
-		textFieldCPF.setBounds(178, 130, 96, 18);
+		textFieldCPF.setBounds(178, 130, 131, 18);
 		add(textFieldCPF);
 		textFieldCPF.setColumns(10);
 		
 		textFieldDataNasc = new JTextField();
+		textFieldDataNasc.setForeground(new Color(255, 255, 255));
+		textFieldDataNasc.setEditable(false);
 		textFieldDataNasc.setBackground(Color.BLACK);
 		textFieldDataNasc.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
-		textFieldDataNasc.setBounds(178, 158, 96, 18);
+		textFieldDataNasc.setBounds(178, 158, 131, 18);
 		add(textFieldDataNasc);
 		textFieldDataNasc.setColumns(10);
 		
 		textFieldPeso = new JTextField();
+		textFieldPeso.setForeground(new Color(255, 255, 255));
+		textFieldPeso.setEditable(false);
 		textFieldPeso.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
 		textFieldPeso.setBackground(Color.BLACK);
 		textFieldPeso.setColumns(10);
-		textFieldPeso.setBounds(178, 214, 73, 18);
+		textFieldPeso.setBounds(178, 214, 101, 18);
 		add(textFieldPeso);
 		
 		lblNome = new JLabel("Nome");
@@ -120,16 +143,22 @@ public class PerfilAlunoPanel extends JPanel {
 		lblKg = new JLabel("Kg");
 		lblKg.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblKg.setForeground(new Color(255, 255, 255));
-		lblKg.setBounds(258, 209, 44, 25);
+		lblKg.setBounds(289, 214, 44, 25);
 		add(lblKg);
 		
 		lblMetros = new JLabel("M");
 		lblMetros.setForeground(Color.WHITE);
 		lblMetros.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblMetros.setBounds(258, 237, 44, 25);
+		lblMetros.setBounds(289, 242, 44, 25);
 		add(lblMetros);
 		
 		JButton btnNewButton = new JButton("Consultar plano");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				menuBase.mostrarPainelTelaCheia(
+                        new PlanoAlunoPanel(menuBase, aluno));
+			}
+		});
 		btnNewButton.setBorderPainted(false);
 		btnNewButton.setBackground(new Color(198, 176, 255));
 		btnNewButton.setForeground(new Color(0, 0, 0));
@@ -138,6 +167,12 @@ public class PerfilAlunoPanel extends JPanel {
 		add(btnNewButton);
 		
 		JButton btnConsultarTreino = new JButton("Consultar treino");
+		btnConsultarTreino.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				menuBase.mostrarPainelTelaCheia(
+                        new TreinoAlunoPanel(menuBase, aluno));
+			}
+		});
 		btnConsultarTreino.setBorderPainted(false);
 		btnConsultarTreino.setBackground(new Color(198, 176, 255));
 		btnConsultarTreino.setForeground(new Color(0, 0, 0));
@@ -146,63 +181,81 @@ public class PerfilAlunoPanel extends JPanel {
 		add(btnConsultarTreino);
 		
 		textFieldAltura = new JTextField();
+		textFieldAltura.setForeground(new Color(255, 255, 255));
+		textFieldAltura.setEditable(false);
 		textFieldAltura.setColumns(10);
 		textFieldAltura.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
 		textFieldAltura.setBackground(Color.BLACK);
-		textFieldAltura.setBounds(178, 242, 73, 18);
+		textFieldAltura.setBounds(178, 242, 101, 18);
 		add(textFieldAltura);
 		
 		textFieldTelefone = new JTextField();
+		textFieldTelefone.setForeground(new Color(255, 255, 255));
+		textFieldTelefone.setEditable(false);
 		textFieldTelefone.setColumns(10);
 		textFieldTelefone.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
 		textFieldTelefone.setBackground(Color.BLACK);
-		textFieldTelefone.setBounds(178, 184, 96, 18);
+		textFieldTelefone.setBounds(178, 184, 131, 18);
 		add(textFieldTelefone);
 		
 		textFieldEmail = new JTextField();
+		textFieldEmail.setForeground(new Color(255, 255, 255));
+		textFieldEmail.setEditable(false);
 		textFieldEmail.setColumns(10);
 		textFieldEmail.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
 		textFieldEmail.setBackground(Color.BLACK);
-		textFieldEmail.setBounds(178, 270, 96, 18);
+		textFieldEmail.setBounds(178, 270, 131, 18);
 		add(textFieldEmail);
 		
-		JRadioButton rdbtnCondicionamento = new JRadioButton("Condicionamento");
+		rdbtnCondicionamento = new JRadioButton("Condicionamento");
+		rdbtnCondicionamento.setEnabled(false);
+		rdbtnCondicionamento.setFocusable(false);
 		rdbtnCondicionamento.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnCondicionamento.setBackground(Color.BLACK);
-		rdbtnCondicionamento.setForeground(Color.WHITE);
+		rdbtnCondicionamento.setForeground(new Color(255, 255, 255));
 		rdbtnCondicionamento.setBounds(430, 290, 156, 20);
 		add(rdbtnCondicionamento);
 		
-		JRadioButton rdbtnEmagrecimento = new JRadioButton("Emagrecimento");
-		rdbtnEmagrecimento.setForeground(Color.WHITE);
+		rdbtnEmagrecimento = new JRadioButton("Emagrecimento");
+		rdbtnEmagrecimento.setEnabled(false);
+		rdbtnEmagrecimento.setFocusable(false);
+		rdbtnEmagrecimento.setForeground(new Color(255, 255, 255));
 		rdbtnEmagrecimento.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnEmagrecimento.setBackground(Color.BLACK);
 		rdbtnEmagrecimento.setBounds(430, 268, 156, 20);
 		add(rdbtnEmagrecimento);
 		
-		JRadioButton rdbtnHipertrofia = new JRadioButton("Hipertrofia");
-		rdbtnHipertrofia.setForeground(Color.WHITE);
+		rdbtnHipertrofia = new JRadioButton("Hipertrofia");
+		rdbtnHipertrofia.setEnabled(false);
+		rdbtnHipertrofia.setFocusable(false);
+		rdbtnHipertrofia.setForeground(new Color(255, 255, 255));
 		rdbtnHipertrofia.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnHipertrofia.setBackground(Color.BLACK);
 		rdbtnHipertrofia.setBounds(430, 246, 156, 20);
 		add(rdbtnHipertrofia);
 		
-		JRadioButton rdbtnExpirada = new JRadioButton("Expirada");
-		rdbtnExpirada.setForeground(Color.WHITE);
+		rdbtnExpirada = new JRadioButton("Expirada");
+		rdbtnExpirada.setEnabled(false);
+		rdbtnExpirada.setFocusable(false);
+		rdbtnExpirada.setForeground(new Color(255, 255, 255));
 		rdbtnExpirada.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnExpirada.setBackground(Color.BLACK);
 		rdbtnExpirada.setBounds(430, 148, 156, 20);
 		add(rdbtnExpirada);
 		
-		JRadioButton rdbtnCancelada = new JRadioButton("Cancelada");
-		rdbtnCancelada.setForeground(Color.WHITE);
+		rdbtnCancelada = new JRadioButton("Cancelada");
+		rdbtnCancelada.setEnabled(false);
+		rdbtnCancelada.setFocusable(false);
+		rdbtnCancelada.setForeground(new Color(255, 255, 255));
 		rdbtnCancelada.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnCancelada.setBackground(Color.BLACK);
 		rdbtnCancelada.setBounds(430, 170, 156, 20);
 		add(rdbtnCancelada);
 		
-		JRadioButton rdbtnAtiva = new JRadioButton("Ativa");
-		rdbtnAtiva.setForeground(Color.WHITE);
+		rdbtnAtiva = new JRadioButton("Ativa");
+		rdbtnAtiva.setEnabled(false);
+		rdbtnAtiva.setFocusable(false);
+		rdbtnAtiva.setForeground(new Color(255, 255, 255));
 		rdbtnAtiva.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		rdbtnAtiva.setBackground(Color.BLACK);
 		rdbtnAtiva.setBounds(430, 126, 156, 20);
@@ -237,6 +290,55 @@ public class PerfilAlunoPanel extends JPanel {
 		lblObjetivo.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblObjetivo.setBounds(430, 217, 96, 18);
 		add(lblObjetivo);
+		
+//Preenche os campos com os dados dos alunos
+		textFieldNome.setText(aluno.getNomeCompleto());
 
+		textFieldCPF.setText(aluno.getCpf());
+
+		textFieldDataNasc.setText(
+		        aluno.getDataNasc().toString());
+
+		textFieldTelefone.setText(
+		        aluno.getTelefone());
+
+		textFieldPeso.setText(
+		        String.valueOf(aluno.getPeso()));
+
+		textFieldAltura.setText(
+		        String.valueOf(aluno.getAltura()));
+
+		textFieldEmail.setText(
+		        aluno.getEmail());
+//Aqui vão os enums
+		switch (aluno.getMatricula()) {
+
+		case ATIVA:
+		    rdbtnAtiva.setSelected(true);
+		    break;
+
+		case EXPIRADA:
+		    rdbtnExpirada.setSelected(true);
+		    break;
+
+		case CANCELADA:
+		    rdbtnCancelada.setSelected(true);
+		    break;
+		}
+		switch (aluno.getObjetivo()) {
+
+		case HIPERTROFIA:
+		    rdbtnHipertrofia.setSelected(true);
+		    break;
+
+		case EMAGRECIMENTO:
+		    rdbtnEmagrecimento.setSelected(true);
+		    break;
+
+		case CONDICIONAMENTO:
+		    rdbtnCondicionamento.setSelected(true);
+		    break;
+		}
+		
 	}
 }
