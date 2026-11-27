@@ -119,102 +119,6 @@ public class MenuBase extends JFrame {
 		panelMenu.add(btnAlunos);
 		btnAlunos.setForeground(new Color(124, 77, 255));
 		btnAlunos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		//Botão do Menu de Funcionários, que lista os funcionários
-		btnFuncionarios = new JButton("Funcionários");
-		btnFuncionarios.setBounds(28, 173, 128, 25);
-		panelMenu.add(btnFuncionarios);
-		btnFuncionarios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelConteudo.removeAll();
-		        
-		        MenuFuncionariosPanel perfil = new MenuFuncionariosPanel();
-		        perfil.setBounds(0, 0, 680, 483);
-
-		        panelConteudo.add(perfil);
-		        panelConteudo.revalidate();
-		        panelConteudo.repaint();
-			}
-		});
-		btnFuncionarios.setForeground(new Color(124, 77, 255));
-		btnFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		//Botão dos treinos
-		btnTreinos = new JButton("Treinos");
-		btnTreinos.setBounds(28, 239, 128, 25);
-		panelMenu.add(btnTreinos);
-		btnTreinos.setForeground(new Color(124, 77, 255));
-		btnTreinos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		//Botão dos planos da academia
-		btnPlanos = new JButton("Planos");
-		btnPlanos.setBounds(28, 305, 128, 25);
-		panelMenu.add(btnPlanos);
-		btnPlanos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelConteudo.removeAll();
-				
-				PlanosPanel planos = new PlanosPanel();
-				planos.setBounds(0, 0, 680, 483);
-				
-				panelConteudo.add(planos);
-				panelConteudo.revalidate();
-		        panelConteudo.repaint();
-			}
-		});
-		btnPlanos.setForeground(new Color(124, 77, 255));
-		btnPlanos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		//Botão dos relatórios
-		btnRelatorios = new JButton("Relatórios");
-		btnRelatorios.setBounds(28, 371, 128, 25);
-		panelMenu.add(btnRelatorios);
-		btnRelatorios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelConteudo.removeAll();
-				
-				RelatoriosPanel relatorios = new RelatoriosPanel();
-				relatorios.setBounds(0, 0, 680, 483);
-				
-				panelConteudo.add(relatorios);
-				panelConteudo.revalidate();
-		        panelConteudo.repaint();
-			}
-		});
-		btnRelatorios.setForeground(new Color(124, 77, 255));
-		btnRelatorios.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		
-		//Botão do Ponto, onde mostra a questão de bater ponto
-		btnPonto = new JButton("Ponto");
-		btnPonto.setBounds(28, 437, 128, 25);
-		panelMenu.add(btnPonto);
-		btnPonto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelConteudo.removeAll();
-				
-				PontoPanel ponto = new PontoPanel();
-				ponto.setBounds(0, 0, 680, 483);
-				
-				panelConteudo.add(ponto);
-				panelConteudo.revalidate();
-		        panelConteudo.repaint();
-			}
-		});
-		btnPonto.setForeground(new Color(124, 77, 255));
-		btnPonto.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnTreinos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				panelConteudo.removeAll();
-				
-				TreinosPanel treinos = new TreinosPanel();
-				treinos.setBounds(0, 0, 680, 483);
-				
-				panelConteudo.add(treinos);
-				panelConteudo.revalidate();
-		        panelConteudo.repaint();
-			}
-		});
-		
 		btnAlunos.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
 
@@ -228,6 +132,102 @@ public class MenuBase extends JFrame {
 		        panelConteudo.repaint();
 		    }
 		});
+		
+		//Botão do Menu de Funcionários, que lista os funcionários
+		btnFuncionarios = new JButton("Funcionários");
+		btnFuncionarios.setBounds(28, 173, 128, 25);
+		btnFuncionarios.setForeground(new Color(124, 77, 255));
+		btnFuncionarios.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelMenu.add(btnFuncionarios);
+		btnFuncionarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConteudo.removeAll();
+		        
+		        MenuFuncionariosPanel perfil = new MenuFuncionariosPanel();
+		        perfil.setBounds(0, 0, 680, 483);
+
+		        panelConteudo.add(perfil);
+		        panelConteudo.revalidate();
+		        panelConteudo.repaint();
+			}
+		});
+		
+		//Botão dos treinos
+		btnTreinos = new JButton("Treinos");
+		btnTreinos.setBounds(28, 239, 128, 25);
+		panelMenu.add(btnTreinos);
+		btnTreinos.setForeground(new Color(124, 77, 255));
+		btnTreinos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnTreinos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConteudo.removeAll();
+				
+				TreinosPanel treinos = new TreinosPanel();
+				treinos.setBounds(0, 0, 680, 483);
+				
+				panelConteudo.add(treinos);
+				panelConteudo.revalidate();
+		        panelConteudo.repaint();
+			}
+		});
+		
+		//Botão dos planos da academia
+		btnPlanos = new JButton("Planos");
+		btnPlanos.setBounds(28, 305, 128, 25);
+		btnPlanos.setForeground(new Color(124, 77, 255));
+		btnPlanos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelMenu.add(btnPlanos);
+		btnPlanos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConteudo.removeAll();
+				
+				PlanosPanel planos = new PlanosPanel();
+				planos.setBounds(0, 0, 680, 483);
+				
+				panelConteudo.add(planos);
+				panelConteudo.revalidate();
+		        panelConteudo.repaint();
+			}
+		});
+		
+		//Botão dos relatórios
+		btnRelatorios = new JButton("Relatórios");
+		btnRelatorios.setBounds(28, 371, 128, 25);
+		btnRelatorios.setForeground(new Color(124, 77, 255));
+		btnRelatorios.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelMenu.add(btnRelatorios);
+		btnRelatorios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConteudo.removeAll();
+				
+				RelatoriosPanel relatorios = new RelatoriosPanel();
+				relatorios.setBounds(0, 0, 680, 483);
+				
+				panelConteudo.add(relatorios);
+				panelConteudo.revalidate();
+		        panelConteudo.repaint();
+			}
+		});
+		
+		//Botão do Ponto, onde mostra a questão de bater ponto
+		btnPonto = new JButton("Ponto");
+		btnPonto.setBounds(28, 437, 128, 25);
+		btnPonto.setForeground(new Color(124, 77, 255));
+		btnPonto.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panelMenu.add(btnPonto);
+		btnPonto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panelConteudo.removeAll();
+				
+				PontoPanel ponto = new PontoPanel();
+				ponto.setBounds(0, 0, 680, 483);
+				
+				panelConteudo.add(ponto);
+				panelConteudo.revalidate();
+		        panelConteudo.repaint();
+			}
+		});
+		
 		panelConteudo.revalidate();
 		panelConteudo.repaint();
 	}

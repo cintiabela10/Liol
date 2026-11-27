@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
@@ -35,6 +36,7 @@ public class MenuFuncionariosPanel extends JPanel {
 		btnCadastrar.setBounds(284, 415, 111, 21);
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		add(btnCadastrar);
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(51, 91, 577, 295);

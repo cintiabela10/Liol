@@ -32,8 +32,8 @@ public class PerfilFuncionarioPanel extends JPanel {
 	private JTextField textFieldEndereco;
 	private JTextField textFieldEmail;
 	private JLabel lblEmail;
-	private JTextField txtCra;
-	private JTextField txtCref;
+	private JTextField textFieldCra;
+	private JTextField textFieldCref;
 	private final ButtonGroup btnGroupCargo = new ButtonGroup();
 	private final ButtonGroup btnGroupStatus = new ButtonGroup();
 	private JLabel lblCREF;
@@ -236,25 +236,31 @@ public class PerfilFuncionarioPanel extends JPanel {
 		lblEmail.setBounds(58, 296, 44, 17);
 		add(lblEmail);
 		
-		txtCra = new JTextField();
-		txtCra.setVisible(false);
-		txtCra.setEnabled(false);
-		txtCra.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtCra.setForeground(new Color(128, 128, 128));
-		txtCra.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCra.setColumns(10);
-		txtCra.setBounds(543, 293, 64, 18);
-		add(txtCra);
+		textFieldCra = new JTextField();
+		textFieldCra.setDisabledTextColor(Color.WHITE);
+		textFieldCra.setBackground(Color.BLACK);
+		textFieldCra.setBorder(new LineBorder(new Color(124, 77, 255), 2));
+		textFieldCra.setVisible(false);
+		textFieldCra.setEnabled(false);
+		textFieldCra.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textFieldCra.setForeground(new Color(128, 128, 128));
+		textFieldCra.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldCra.setColumns(10);
+		textFieldCra.setBounds(543, 293, 64, 18);
+		add(textFieldCra);
 		
-		txtCref = new JTextField();
-		txtCref.setVisible(false);
-		txtCref.setEnabled(false);
-		txtCref.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		txtCref.setForeground(new Color(128, 128, 128));
-		txtCref.setHorizontalAlignment(SwingConstants.CENTER);
-		txtCref.setColumns(10);
-		txtCref.setBounds(543, 270, 64, 18);
-		add(txtCref);
+		textFieldCref = new JTextField();
+		textFieldCref.setBorder(new LineBorder(new Color(124, 77, 255), 2, true));
+		textFieldCref.setDisabledTextColor(Color.WHITE);
+		textFieldCref.setBackground(Color.BLACK);
+		textFieldCref.setVisible(false);
+		textFieldCref.setEnabled(false);
+		textFieldCref.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		textFieldCref.setForeground(new Color(124, 77, 255));
+		textFieldCref.setHorizontalAlignment(SwingConstants.CENTER);
+		textFieldCref.setColumns(10);
+		textFieldCref.setBounds(543, 270, 64, 18);
+		add(textFieldCref);
 		
 		lblCREF = new JLabel("CREF");
 		lblCREF.setVisible(false);
@@ -271,30 +277,30 @@ public class PerfilFuncionarioPanel extends JPanel {
 		add(lblCRA);
 		
 		rdbtnGerente.addActionListener(e -> {
-		    txtCra.setVisible(true);
-		    txtCra.setEnabled(true);
-		    txtCref.setVisible(false);
-		    txtCref.setEnabled(false);
+		    textFieldCra.setVisible(true);
+		    textFieldCra.setEnabled(true);
+		    textFieldCref.setVisible(false);
+		    textFieldCref.setEnabled(false);
 		    lblCRA.setVisible(true);
 		    lblCREF.setVisible(false);
 
 		});
 		
 		rdbtnInstrutor.addActionListener(e -> {
-		    txtCref.setVisible(true);
-		    txtCref.setEnabled(true);
-		    txtCra.setVisible(false);
-		    txtCra.setEnabled(false);
+			textFieldCref.setVisible(true);
+			textFieldCref.setEnabled(true);
+			textFieldCra.setVisible(false);
+			textFieldCra.setEnabled(false);
 		    lblCREF.setVisible(true);
 		    lblCRA.setVisible(false);
 
 		});
 
 		rdbtnRecepcionista.addActionListener(e -> {
-		    txtCra.setVisible(false);
-		    txtCra.setEnabled(false);
-		    txtCref.setVisible(false);
-		    txtCref.setEnabled(false);
+			textFieldCra.setVisible(false);
+			textFieldCra.setEnabled(false);
+			textFieldCref.setVisible(false);
+			textFieldCref.setEnabled(false);
 		    lblCREF.setVisible(false);
 		    lblCRA.setVisible(false);
 
