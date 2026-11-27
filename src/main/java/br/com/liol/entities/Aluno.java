@@ -1,81 +1,41 @@
 package br.com.liol.entities;
-import br.com.liol.entities.enums.StatusMatricula;
+
+import java.time.LocalDate;
+
 import br.com.liol.entities.enums.Objetivo;
+import br.com.liol.entities.enums.StatusMatricula;
 import br.com.liol.entities.enums.TipoPlano;
 
-public class Aluno {
+public class Aluno extends Pessoa {
 
-    private String nome;
-    private String cpf;
-    private String dataNascimento; // dd/mm/aa
-    private String telefone;       // (11) 9 1234-4321
-    private double peso;           // Kg
-    private double altura;         // metros
-    private String email;
-    private StatusMatricula matricula;  // Ativa, Expirada ou Cancelada
-    private Objetivo objetivo;     // Emagrecimento, Hipertrofia ou Condicionamento
-    private TipoPlano tipoPlano;   // Mensal, Trimestral, Semestral ou Anual - conforme os dados mockup de planos
+    private String matriculaAluno;
+    private LocalDate dataInscricao;
+
+    private double altura;
+    private double peso;
+
+    private StatusMatricula matricula;
+    private Objetivo objetivo;
+    private TipoPlano tipoPlano;
 
     public Aluno() {
+        super();
     }
 
-    public Aluno(String nome, String cpf, String dataNascimento,
-            String telefone, double peso, double altura,
-            String email, StatusMatricula matricula,
-            Objetivo objetivo, TipoPlano tipoPlano) {
-
-   this.nome = nome;
-   this.cpf = cpf;
-   this.dataNascimento = dataNascimento;
-   this.telefone = telefone;
-   this.peso = peso;
-   this.altura = altura;
-   this.email = email;
-   this.matricula = matricula;
-   this.objetivo = objetivo;
-   this.tipoPlano = tipoPlano;
-}
-
-    // Getters e Setters
-
-    public String getNome() {
-        return nome;
+    public String getMatriculaAluno() {
+        return matriculaAluno;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setMatriculaAluno(String matriculaAluno) {
+        this.matriculaAluno = matriculaAluno;
     }
 
-    public String getCpf() {
-        return cpf;
+    public LocalDate getDataInscricao() {
+        return dataInscricao;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public void setDataInscricao(LocalDate dataInscricao) {
+        this.dataInscricao = dataInscricao;
     }
 
     public double getAltura() {
@@ -86,12 +46,12 @@ public class Aluno {
         this.altura = altura;
     }
 
-    public String getEmail() {
-        return email;
+    public double getPeso() {
+        return peso;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPeso(double peso) {
+        this.peso = peso;
     }
 
     public StatusMatricula getMatricula() {
@@ -120,6 +80,6 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return nome;
+        return getNomeCompleto();
     }
 }
