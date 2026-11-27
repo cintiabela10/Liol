@@ -3,13 +3,21 @@ package br.com.liol.ui;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Cursor;
+
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.liol.entities.Aluno;
+
 import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,27 +29,49 @@ public class TreinoAlunoPanel extends JPanel {
 	private JTextField textFieldObjetivo;
 	private JTextField textFieldTreino;
 	private JTable table;
+	
+	private MenuBase menuBase;
+	private Aluno aluno;
 
 	/**
 	 * Create the panel.
 	 */
-	public TreinoAlunoPanel() {
-		setPreferredSize(new Dimension(680, 483));
+	public TreinoAlunoPanel(MenuBase menuBase, Aluno aluno) {
+		this.menuBase = menuBase;
+	    this.aluno = aluno;
+		setPreferredSize(new Dimension(960, 540));
 		setForeground(new Color(255, 255, 255));
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
+		
+		JButton btnVoltar = new JButton("<-");
+		btnVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				menuBase.mostrarPainel(
+				        new PerfilAlunoPanel(menuBase, aluno)
+				    );
+			}
+		});
+		btnVoltar.setBorder(new LineBorder(new Color(124, 77, 255), 2));
+		btnVoltar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnVoltar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnVoltar.setForeground(new Color(124, 77, 255));
+		btnVoltar.setBackground(new Color(255, 255, 255));
+		btnVoltar.setFocusPainted(false);
+		btnVoltar.setBounds(30, 25, 55, 38);
+		add(btnVoltar);
 		
 		JLabel lblTreinos = new JLabel("Treinos");
 		lblTreinos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTreinos.setForeground(Color.WHITE);
 		lblTreinos.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblTreinos.setBounds(259, 43, 161, 20);
+		lblTreinos.setBounds(399, 43, 161, 20);
 		add(lblTreinos);
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new LineBorder(new Color(124, 77, 255), 2));
 		panel.setBackground(new Color(0, 0, 0));
-		panel.setBounds(43, 88, 594, 315);
+		panel.setBounds(50, 88, 860, 315);
 		add(panel);
 		panel.setLayout(null);
 		
@@ -114,7 +144,7 @@ public class TreinoAlunoPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new LineBorder(new Color(124, 77, 255), 2));
 		scrollPane.setBackground(new Color(0, 0, 0));
-		scrollPane.setBounds(19, 84, 556, 221);
+		scrollPane.setBounds(14, 84, 831, 221);
 		panel.add(scrollPane);
 		
 		table = new JTable();
@@ -147,15 +177,15 @@ public class TreinoAlunoPanel extends JPanel {
 		scrollPane.setViewportView(table);
 		
 		JButton btnEditar = new JButton("Editar");
-		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnEditar.setForeground(new Color(124, 77, 255));
-		btnEditar.setBounds(156, 437, 106, 20);
+		btnEditar.setBounds(236, 425, 125, 36);
 		add(btnEditar);
 		
 		JButton btnImprimir = new JButton("Imprimir");
 		btnImprimir.setForeground(new Color(124, 77, 255));
-		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnImprimir.setBounds(418, 437, 106, 20);
+		btnImprimir.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnImprimir.setBounds(597, 425, 125, 36);
 		add(btnImprimir);
 	}
 }

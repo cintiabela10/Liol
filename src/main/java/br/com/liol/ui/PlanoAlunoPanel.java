@@ -16,23 +16,21 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import br.com.liol.entities.Aluno;
+
 public class PlanoAlunoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private TelaLogin telaLogin;
-
-	/**
-	 * Construtor usado pela janela principal para navegação.
-	 */
-	public PlanoAlunoPanel(TelaLogin telaLogin) {
-		this();
-		this.telaLogin = telaLogin;
-	}
-
+	private MenuBase menuBase;
+	private Aluno aluno;
+	
+	
 	/**
 	 * Construtor padrão (mantém a aba Design do WindowBuilder funcionando).
 	 */
-	public PlanoAlunoPanel() {
+	public PlanoAlunoPanel(MenuBase menuBase, Aluno aluno) {
+		this.menuBase = menuBase;
+	    this.aluno = aluno;
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
 		setBounds(0, 0, 960, 540);
@@ -41,9 +39,9 @@ public class PlanoAlunoPanel extends JPanel {
 		JButton btnVoltar = new JButton("<-");
 		btnVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (telaLogin != null) {
-					telaLogin.voltarParaLogin(); // Trocar para o painel anterior (ex: Dashboard) quando existir
-				}
+				menuBase.mostrarPainel(
+				        new PerfilAlunoPanel(menuBase, aluno)
+				    );
 			}
 		});
 		btnVoltar.setBorder(new LineBorder(new Color(124, 77, 255), 2));

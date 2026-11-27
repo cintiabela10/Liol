@@ -2,24 +2,29 @@ package br.com.liol.ui;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
-import javax.swing.ListSelectionModel;
+import java.awt.GridLayout;
+import java.util.List;
+
+import br.com.liol.entities.Aluno;
+import br.com.liol.mock.MockupAlunos;
+
 
 public class MenuAlunosPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private MenuBase menuBase;
 
 	/**
 	 * Create the panel.
 	 */
-	public MenuAlunosPanel() {
+	public MenuAlunosPanel(MenuBase menuBase) {
+		this.menuBase = menuBase;
 		setBackground(new Color(0, 0, 0));
 		setLayout(null);
 		setBounds(10, 10, 680, 483);
@@ -36,24 +41,46 @@ public class MenuAlunosPanel extends JPanel {
 		add(btnCadastrar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(51, 91, 577, 295);
+		scrollPane.setOpaque(false);
+		scrollPane.setBorder(null);
+		scrollPane.setBounds(71, 107, 537, 268);
 		add(scrollPane);
 		
-		JList list = new JList();
-		list.setForeground(new Color(124, 77, 255));
-		list.setBackground(new Color(0, 0, 0));
-		list.setVisibleRowCount(3);
-		list.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Pichu - ID", "Pikachu - ID", "Raichu - ID", "Eevee - ID", "Vaporeon - ID", "Umbreon - ID", "Jolteon - ID", "Leafeon - ID", "Flareon - ID", "Glaceon - ID", "Espeon - ID", "Sylveon - ID", "Charmander - ID", "Charmeleon - ID", "Charizard - ID"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		scrollPane.setViewportView(list);
+		JPanel AlunosPanel = new JPanel();
+		AlunosPanel.setForeground(new Color(255, 255, 255));
+		AlunosPanel.setBackground(new Color(0, 0, 0));
+		scrollPane.setViewportView(AlunosPanel);
+		AlunosPanel.setLayout(new GridLayout(0, 3, 15, 15));
+		
+        List<Aluno> alunos = MockupAlunos.listar();
 
+        for (Aluno aluno : alunos) {
+
+            JButton btnAluno = new JButton(aluno.getNome());
+
+            btnAluno.setBackground(new Color(124, 77, 255));
+            btnAluno.setForeground(Color.WHITE);
+            btnAluno.setPreferredSize(
+            	    new Dimension(100, 50));
+            btnAluno.setFocusPainted(false);
+
+            btnAluno.setFont(
+                    new Font("Tahoma",
+                    Font.PLAIN,
+                    15));
+
+            btnAluno.addActionListener(e -> {
+
+            	menuBase.mostrarPainel(
+                        new PerfilAlunoPanel(menuBase, aluno));
+
+            });
+
+            AlunosPanel.add(btnAluno);
+        }
+
+        scrollPane.setViewportView(AlunosPanel);
+		
 	}
+	
 }

@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import java.awt.Color;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,6 +30,7 @@ public class MenuBase extends JFrame {
 	protected JButton btnPlanos;
 	protected JButton btnRelatorios;
 	protected JButton btnPonto;
+	private JPanel panelMenu;
 
 	/**
 	 * Launch the application.
@@ -83,7 +86,7 @@ public class MenuBase extends JFrame {
 		home.setBounds(0, 0, 680, 483);
 		panelConteudo.add(home);
 		
-		JPanel panelMenu = new JPanel();
+		panelMenu = new JPanel();
 		panelMenu.setBackground(new Color(124, 77, 255));
 		panelMenu.setBounds(725, 0, 185, 503);
 		contentPane.add(panelMenu);
@@ -217,7 +220,7 @@ public class MenuBase extends JFrame {
 
 		        panelConteudo.removeAll();
 		        
-		        MenuAlunosPanel perfil = new MenuAlunosPanel();
+		        MenuAlunosPanel perfil = new MenuAlunosPanel(MenuBase.this);
 		        perfil.setBounds(0, 0, 680, 483);
 
 		        panelConteudo.add(perfil);
@@ -244,5 +247,34 @@ public class MenuBase extends JFrame {
 				y += espacamento;
 			}
 		}
+	}
+	//Para trocar a tela que tá sendo mostrada.
+	public void mostrarPainel(JPanel painel) {
+		panelMenu.setVisible(true);
+		
+	    panelConteudo.removeAll();
+	    panelConteudo.setBounds(10, 10, 680, 483);
+
+	    painel.setBounds(0, 0, 680, 483);
+
+	    panelConteudo.add(painel);
+
+	    panelConteudo.revalidate();
+	    panelConteudo.repaint();
+	}
+	public void mostrarPainelTelaCheia(JPanel painel) {
+
+	    panelMenu.setVisible(false);
+
+	    panelConteudo.removeAll();
+
+	    painel.setBounds(0, 0, 910, 483);
+
+	    panelConteudo.setBounds(10, 10, 910, 483);
+
+	    panelConteudo.add(painel);
+
+	    panelConteudo.revalidate();
+	    panelConteudo.repaint();
 	}
 }
